@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 import pandas as pd
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from urllib.parse import urlparse
@@ -11,9 +12,9 @@ from src.datascience.constants import *
 from src.datascience.utils.common import read_yaml, create_directories, save_json
 from src.datascience.entity.config_entity import ModelEvaluationConfig
 
-os.environ["MLFLOW_TRACKING_URI"] = 'https://dagshub.com/DerylKhalfani/End2EndProject-ML-Ops-Bootcamp.mlflow'
-os.environ["MLFLOW_TRACKING_PASSWORD"] = ''
-os.environ["MLFLOW_TRACKING_USERNAME"] = ''
+os.environ["MLFLOW_TRACKING_URI"] = os.getenv("MLFLOW_TRACKING_URI")
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD")
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME")
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
